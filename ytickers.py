@@ -71,7 +71,6 @@ def generate_stars(tasks_to_write):
         for task in page:
             file_name = 'tmp/img/{}-star.png'.format(task['id'])
 
-            print(int(round(4.4 * task['stars'])))
             background = Image.new("RGBA", (440, 84), (255, 255, 255, 255))
 
             draw = ImageDraw.Draw(background)
