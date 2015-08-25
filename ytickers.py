@@ -66,17 +66,17 @@ def generate_qrs(host_name, tasks_to_write):
 
 
 def generate_stars(tasks_to_write):
-    foreground = Image.open("stars.png")
+    foreground = Image.open('stars.png')
     for page in tasks_to_write:
         for task in page:
             file_name = 'tmp/img/{}-star.png'.format(task['id'])
 
-            background = Image.new("RGBA", (440, 84), (255, 255, 255, 255))
+            background = Image.new('RGBA', (440, 84), (255, 255, 255, 255))
 
             draw = ImageDraw.Draw(background)
             draw.rectangle(
                 ((0, 0), (int(round(4.4 * task['stars'])), 84)),
-                fill="black")
+                fill='black')
 
             Image.alpha_composite(background, foreground) \
                 .save(open(file_name, 'w+b'))
