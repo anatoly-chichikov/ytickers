@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" content="text/html">
+    <title>Stickers</title>
+    <meta name="description" content="Agile Board Stickers">
+</head>
+<body>
+<style type="text/css">
+    @page {
+        size: A4;
+        margin: 0;
+        @frame {
+            left: 0;
+            top: 0;
+            width: 595pt;
+            -pdf-frame-border: 1;
+        }
+    }
+
+    @font-face {
+        font-family: Myriad;
+        src: url(font.ttf);
+    }
+
+    @font-face {
+        font-family: Myriad;
+        src: url(font-bold.ttf);
+        font-weight: bold;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        margin: 3em;
+        font-family: "Myriad";
+        font-size: 21px;
+    }
+
+    .a4 {
+        page-break-after: always
+    }
+
+    hr {
+        padding-bottom: 100mm;
+    }
+
+    .dot {
+        padding: 1mm;
+        text-align: center;
+    }
+
+    .importance {
+        margin-left: 1mm;
+    }
+
+    .importance-number, .information-project {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .importance-stars {
+        width: 35mm;
+    }
+
+    .qr-img {
+        width: 30mm;
+    }
+
+    .description-text {
+        margin-left: -60mm;
+        padding-top: 10mm;
+    }
+
+    .notes {
+        padding: 7.18mm 120mm;
+        margin-left: -20mm;
+        border-bottom: 1px solid black;
+    }
+</style>
+{% for page in tasks %}
+    <div class="a4">
+        {% for task in page %}
+            <table border="none" class="sticker">
+                <tr>
+                    <td class="dot" colspan="2">.</td>
+                </tr>
+                <tr>
+                    <td width="190mm" align="left">
+                        <div class="importance">
+                            <span class="importance-number">&nbsp;{{ task['importance'] }}&nbsp;</span>
+                            <img src="tmp/img/{{ task['id'] }}-star.png" alt="importance" class="importance-stars">
+                        </div>
+                    </td>
+                    <td align="right"><span class="information-project">{{ task['project'] }} </span></td>
+                </tr>
+                <tr>
+                    <td align="left"><br/><img src="tmp/img/{{ task['id'] }}-qr.png" alt="qr-code" class="qr-img"></td>
+                    <td align="justify" valign="top"><p class="description-text">{{ task['title'] }}</p></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span class="information-id">&nbsp;&nbsp;&nbsp;{{ task['id'] }}</span></td>
+                </tr>
+            </table>
+            <div class="notes"><br/></div>
+        {% endfor %}
+    </div>
+{% endfor %}
+</body>
+</html>
