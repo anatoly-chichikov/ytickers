@@ -60,7 +60,7 @@ def generate_qrs(host_name, tasks_to_write):
     for page in tasks_to_write:
         for task in page:
             file_name = 'tmp/img/{}-qr.png'.format(task['id'])
-            encoded_url = 'http://{}/{}'.format(host_name, task['id'])
+            encoded_url = 'http://{}/issue/{}'.format(host_name, task['id'])
             img = qrcode.make(encoded_url)
             img.save(open(file_name, 'w+b'))
 
