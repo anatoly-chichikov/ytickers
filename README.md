@@ -28,11 +28,11 @@ config = {
 
 First of all you need to redefine `yt_host` property. 
 It will be used for generating QR-codes with direct links to issues.
-Then specify all four required `fields` if they differs from your YT configuration.
+Then specify all four required `fields` if they differ from your YT configuration.
 However if you have an extra fields in exported csv they will be ignored by script.
 
 ### CSV input file
-For example you have uploaded your bunch of issues from YT to file `issues.csv`:
+For example you have uploaded bunch of issues from YT to file `issues.csv`:
 ```
 "Issue Id","Subsystem","Summary","Importance"
 "MYPRJ-1","My Cool Project","Generate Cool Idea","100"
@@ -41,12 +41,12 @@ For example you have uploaded your bunch of issues from YT to file `issues.csv`:
 ```
 
 ### Running script
-Just type in the project root:
+Then just type in the project root:
 ```
 ./ytickers /path/to/exported.csv
 ```
 
 ### PDF output
-Your fantastic result will be placed here `tmp/out/` and looks like:
+And your fantastic result will be placed here `tmp/out/` and looks like:
 
 ![Stickers Example](example/example.png)
