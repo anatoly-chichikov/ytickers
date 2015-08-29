@@ -13,6 +13,7 @@ import qrcode
 from PIL import Image
 from PIL import ImageDraw
 
+from config import config
 
 def load_tasks_from_csv():
     all_tasks = []
@@ -20,10 +21,10 @@ def load_tasks_from_csv():
         reader = csv.DictReader(csvfile)
         for row in reader:
             task = {
-                'id': row['Issue Id'],
-                'project': row['Subsystem'],
-                'title': unicode(row['Summary'], 'utf-8'),
-                'importance': int(row['Importance'])
+                'id': row[config['fields']['id']],
+                'project': row[config['fields']['project']],
+                'title': unicode(row[config['fields']['title']], 'utf-8'),
+                'importance': int(row[config['fields']['importance']])
             }
             all_tasks.append(task)
 
@@ -44,7 +45,9 @@ def process_template(to_process):
 
 
 def convert_html_to_pdf(source):
-    output_filename = 'tmp/out/stickers_{}_{}.pdf'.format(time.strftime('%d-%m-%y'), time.strftime('%X'))
+    output_filename = 'tmp/out/stickers_{}_{}.pdf' \
+        .format(time.strftime('%d-%m-%y'), time.strftime('%X'))
+
     result_file = open(output_filename, 'w+b')
 
     pisa.CreatePDF(
@@ -96,7 +99,7 @@ def chunks(l, n):
 
 
 if __name__ == '__main__':
-    host = 'youtrack.com'
+    host = config['yt_host']
 
     print('Preparing...'),
     ensure_dirs()
@@ -122,4 +125,5 @@ if __name__ == '__main__':
     result = convert_html_to_pdf(stickers)
     print('Done!')
 
-    print('\nYour result report is available here: {} '.format(result))
+    print('\nYour result report is available here: {} '
+          .format(result))
