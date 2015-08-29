@@ -6,6 +6,7 @@ import os
 import time
 import shutil
 import csv
+import sys
 
 from xhtml2pdf import pisa
 from jinja2 import Template
@@ -15,9 +16,23 @@ from PIL import ImageDraw
 
 from config import config
 
-def load_tasks_from_csv():
+
+def validate_args():
+    if len(sys.argv) < 2:
+        print('No csv file has been specified, using "example.csv"')
+        path = 'example/example.csv'
+    else:
+        path = sys.argv[1]
+
+    print('Source file: {}'.format(path))
+    print('Using config: {}'.format(config))
+
+    return path
+
+
+def load_tasks_from_csv(path):
     all_tasks = []
-    with open('tasks.csv') as csvfile:
+    with open(path) as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             task = {
@@ -99,6 +114,7 @@ def chunks(l, n):
 
 
 if __name__ == '__main__':
+    src = validate_args()
     host = config['yt_host']
 
     print('Preparing...'),
@@ -106,7 +122,7 @@ if __name__ == '__main__':
     print('Done!')
 
     print('Loading tasks...'),
-    tasks = load_tasks_from_csv()
+    tasks = load_tasks_from_csv(src)
     print('Done!')
 
     print('Generating QR codes...'),
@@ -125,5 +141,5 @@ if __name__ == '__main__':
     result = convert_html_to_pdf(stickers)
     print('Done!')
 
-    print('\nYour result report is available here: {} '
+    print('\nYour result report is available here: {}'
           .format(result))
