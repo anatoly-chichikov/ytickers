@@ -25,7 +25,7 @@ def validate_args():
         path = sys.argv[1]
 
     print('Source file: {}'.format(path))
-    print('Using config: {}'.format(config))
+    print('Using config: {}\n'.format(config))
 
     return path
 
