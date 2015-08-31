@@ -43,7 +43,7 @@ For example you have uploaded bunch of issues from YT to file `issues.csv`:
 ### Running script
 Then just type in the project root:
 ```
-./ytickers /path/to/exported.csv
+./ytickers /path/to/issues.csv
 ```
 
 ### PDF output
