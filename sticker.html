@@ -12,9 +12,8 @@
         margin: 0;
         @frame {
             left: 0;
-            top: 0;
+            top: .5mm;
             width: 595pt;
-            -pdf-frame-border: 1;
         }
     }
 
@@ -41,11 +40,11 @@
     }
 
     .a4 {
-        page-break-after: always
+        page-break-after: always;
     }
 
-    hr {
-        padding-bottom: 100mm;
+    .top-line {
+        border-top: 1px solid black;
     }
 
     .dot {
@@ -76,7 +75,7 @@
     }
 
     .notes {
-        padding: 7.18mm 120mm;
+        padding: 7.1mm 120mm;
         margin-left: -20mm;
         border-bottom: 1px solid black;
     }
@@ -85,7 +84,7 @@
     <div class="a4">
         {% for task in page %}
             <table border="none" class="sticker">
-                <tr>
+                <tr class="top-line">
                     <td class="dot" colspan="2">.</td>
                 </tr>
                 <tr>
