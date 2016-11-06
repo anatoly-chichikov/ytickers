@@ -75,10 +75,21 @@
     }
 
     .notes {
-        padding: 7.1mm 120mm;
+        padding: 0 120mm;
         margin-left: -20mm;
         border-bottom: 1px solid black;
     }
+
+    .smiles {
+        width: 45mm;
+        height: 15mm;
+    }
+
+    .smiles-img {
+        width: 42.3mm;
+        height: 14.1mm;
+    }
+
 </style>
 {% for page in tasks %}
     <div class="a4">
@@ -102,6 +113,11 @@
                 </tr>
                 <tr>
                     <td colspan="2"><span class="information-id">&nbsp;&nbsp;&nbsp;{{ task['id'] }}</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <span class="smiles"><img src="smiles.png" alt="smiles" class="smiles-img"></span>
+                    </td>
                 </tr>
             </table>
             <div class="notes"><br/></div>
