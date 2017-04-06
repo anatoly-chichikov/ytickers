@@ -71,7 +71,7 @@ def convert_html_to_pdf(source):
         dest=result_file)
 
     result_file.close()
-    return os.getcwd() + result_file.name
+    return os.getcwd() + '/' + result_file.name
 
 
 def generate_qrs(host_name, tasks_to_write):
