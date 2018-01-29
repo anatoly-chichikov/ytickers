@@ -1,0 +1,3 @@
+html5lib==1.0b8
+qrcode
+xhtml2pdf
