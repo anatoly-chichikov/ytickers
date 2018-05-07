@@ -74,6 +74,14 @@ def convert_html_to_pdf(source):
     return os.getcwd() + '/' + result_file.name
 
 
+def delete_source(source):
+    accepted_inputs = ['y', 'yes', 'da', 'davai', 'sukablya', 'aga', 'poehali', 'konechno']
+    user_input = raw_input('Delete %s file? Y/n ' % source)
+
+    if user_input.lower() in accepted_inputs:
+        os.remove(source)
+
+
 def generate_qrs(host_name, tasks_to_write):
     for page in tasks_to_write:
         for task in page:
@@ -143,3 +151,6 @@ if __name__ == '__main__':
 
     print('\nYour result report is available here: {}'
           .format(result))
+
+    print('Deleting source file, if necessary')
+    delete_source(src)
